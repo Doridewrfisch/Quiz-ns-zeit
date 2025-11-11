@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz zur NS-Zeit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6">
+    <div id="app"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "Wann wurde Adolf Hitler zum Reichskanzler ernannt?",
+                options: ["30. Januar 1933", "1. September 1939", "9. November 1923", "27. Februar 1933"],
+                correct: 0,
+                hint: "Dies geschah noch in der Weimarer Republik, kurz vor der Machtübernahme der NSDAP.",
+                info: "Am 30. Januar 1933 wurde Hitler von Reichspräsident Paul von Hindenburg zum Reichskanzler ernannt. Dies markierte den Beginn der NS-Diktatur in Deutschland."
+            },
+            {
+                question: "Was war der Reichstagsbrand?",
+                options: [
+                    "Ein geplanter Angriff der SA",
+                    "Ein Brand im Reichstagsgebäude am 27. Februar 1933",
+                    "Eine Propagandaveranstaltung der NSDAP",
+                    "Ein kommunistischer Aufstand"
+                ],
+                correct: 1,
+                hint: "Dieses Ereignis diente den Nationalsozialisten als Vorwand für Notverordnungen.",
+                info: "Der Reichstagsbrand vom 27. Februar 1933 wurde von den Nazis genutzt, um die 'Reichstagsbrandverordnung' zu erlassen, die grundlegende Bürgerrechte außer Kraft setzte."
+            },
+            {
+                question: "Was bedeutete das 'Ermächtigungsgesetz' von 1933?",
+                options: [
+                    "Die Legalisierung der NSDAP",
+                    "Die Regierung konnte Gesetze ohne Zustimmung des Reichstags erlassen",
+                    "Die Einführung der allgemeinen Wehrpflicht",
+                    "Die Gründung der Gestapo"
+                ],
+                correct: 1,
+                hint: "Es ermöglichte Hitler, ohne parlamentarische Kontrolle zu regieren.",
+                info: "Das Ermächtigungsgesetz vom 24. März 1933 erlaubte der Regierung, Gesetze ohne Zustimmung des Reichstags zu beschließen und war ein entscheidender Schritt zur Diktatur."
+            },
+            {
+                question: "Wann fanden die Nürnberger Rassengesetze statt?",
+                options: ["1933", "1935", "1938", "1942"],
+                correct: 1,
+                hint: "Diese Gesetze wurden auf dem NSDAP-Parteitag in Nürnberg verkündet.",
+                info: "Die Nürnberger Gesetze von 1935 bildeten die rechtliche Grundlage für die systematische Diskriminierung und Verfolgung der jüdischen Bevölkerung."
+            },
+            {
+                question: "Was geschah in der 'Reichspogromnacht' am 9./10. November 1938?",
+                options: [
+                    "Ein kommunistischer Aufstand",
+                    "Organisierte Gewalt gegen jüdische Bürger und deren Eigentum",
+                    "Die Gründung der SA",
+                    "Ein Attentat auf Hitler"
+                ],
+                correct: 1,
+                hint: "Diese Nacht wird auch als 'Reichskristallnacht' bezeichnet wegen der zerbrochenen Schaufenster.",
+                info: "In der Reichspogromnacht wurden Hunderte Synagogen zerstört, jüdische Geschäfte geplündert und Tausende Juden verhaftet und misshandelt."
+            },
+            {
+                question: "Wann begann der Zweite Weltkrieg mit dem deutschen Überfall auf Polen?",
+                options: ["1. September 1939", "10. Mai 1940", "22. Juni 1941", "7. Dezember 1941"],
+                correct: 0,
+                hint: "Dies war der Beginn des größten Krieges der Menschheitsgeschichte.",
+                info: "Am 1. September 1939 begann mit dem deutschen Überfall auf Polen der Zweite Weltkrieg, der bis 1945 dauerte."
+            },
+            {
+                question: "Was war die 'Wannseekonferenz' 1942?",
+                options: [
+                    "Eine militärische Strategiesitzung",
+                    "Die organisatorische Planung des Holocaust",
+                    "Ein Friedensangebot an die Alliierten",
+                    "Die Gründung der Wehrmacht"
+                ],
+                correct: 1,
+                hint: "Diese Konferenz befasste sich mit der 'Endlösung der Judenfrage'.",
+                info: "Am 20. Januar 1942 koordinierten hochrangige NS-Funktionäre am Wannsee die systematische Ermordung der europäischen Juden."
+            },
+            {
+                question: "Was war die 'Weiße Rose'?",
+                options: [
+                    "Eine NS-Propagandaorganisation",
+                    "Eine studentische Widerstandsgruppe um die Geschwister Scholl",
+                    "Ein militärisches Abzeichen",
+                    "Eine Frauenorganisation der NSDAP"
+                ],
+                correct: 1,
+                hint: "Diese Gruppe verteilte Flugblätter gegen das NS-Regime in München.",
+                info: "Die 'Weiße Rose' war eine der bekanntesten Widerstandsgruppen. Ihre Mitglieder, darunter Sophie und Hans Scholl, wurden 1943 hingerichtet."
+            },
+            {
+                question: "Wann war das gescheiterte Attentat auf Hitler durch Claus Schenk Graf von Stauffenberg?",
+                options: ["9. November 1939", "20. Juli 1944", "13. März 1943", "30. Januar 1945"],
+                correct: 1,
+                hint: "Dieses Attentat fand in Hitlers Hauptquartier 'Wolfsschanze' statt.",
+                info: "Am 20. Juli 1944 versuchte Stauffenberg, Hitler mit einer Bombe zu töten. Das Attentat scheiterte, und die Verschwörer wurden hingerichtet."
+            },
+            {
+                question: "Was war die Hitlerjugend (HJ)?",
+                options: [
+                    "Eine militärische Eliteeinheit",
+                    "Die Jugendorganisation der NSDAP",
+                    "Eine Widerstandsgruppe",
+                    "Ein Sportverein"
+                ],
+                correct: 1,
+                hint: "Fast alle deutschen Jugendlichen wurden Mitglieder dieser Organisation.",
+                info: "Die Hitlerjugend war die Jugendorganisation der NSDAP, die Kinder und Jugendliche im nationalsozialistischen Sinne erziehen sollte."
+            },
+            {
+                question: "Was war das Konzentrationslager Auschwitz?",
+                options: [
+                    "Ein Kriegsgefangenenlager",
+                    "Das größte Vernichtungslager des Holocaust",
+                    "Ein Arbeitslager für politische Gefangene",
+                    "Ein Internierungslager für Soldaten"
+                ],
+                correct: 1,
+                hint: "Hier wurden über eine Million Menschen ermordet, hauptsächlich Juden.",
+                info: "Auschwitz-Birkenau war das größte deutsche Konzentrations- und Vernichtungslager. Etwa 1,1 Millionen Menschen wurden dort ermordet."
+            },
+            {
+                question: "Was bedeutete 'Gleichschaltung' im NS-Regime?",
+                options: [
+                    "Die Vereinheitlichung aller gesellschaftlichen Bereiche unter NS-Kontrolle",
+                    "Die Synchronisierung von Uhren",
+                    "Ein militärischer Befehl",
+                    "Die Einführung des Hitlergrußes"
+                ],
+                correct: 0,
+                hint: "Alle Organisationen und Institutionen sollten auf NS-Linie gebracht werden.",
+                info: "Durch die 'Gleichschaltung' wurden ab 1933 alle gesellschaftlichen, politischen und kulturellen Bereiche der NS-Ideologie unterworfen."
+            },
+            {
+                question: "Was war die Gestapo?",
+                options: [
+                    "Die Propagandaabteilung",
+                    "Die Geheime Staatspolizei",
+                    "Eine Parteiorganisation",
+                    "Eine militärische Einheit"
+                ],
+                correct: 1,
+                hint: "Diese Organisation war für Überwachung und Verfolgung von 'Staatsfeinden' zuständig.",
+                info: "Die Gestapo (Geheime Staatspolizei) war die politische Polizei des NS-Regimes und verfolgte brutal alle Gegner der Nationalsozialisten."
+            },
+            {
+                question: "Wann kapitulierte Nazi-Deutschland und endete der Zweite Weltkrieg in Europa?",
+                options: ["30. April 1945", "8. Mai 1945", "2. September 1945", "1. Januar 1946"],
+                correct: 1,
+                hint: "Dieser Tag wird in vielen Ländern als Tag der Befreiung gefeiert.",
+                info: "Am 8. Mai 1945 kapitulierte Deutschland bedingungslos. Dieser Tag markiert das Ende des Zweiten Weltkriegs in Europa."
+            },
+            {
+                question: "Was war die 'Aktion T4'?",
+                options: [
+                    "Ein militärisches Unternehmen",
+                    "Das Euthanasieprogramm zur Ermordung von Menschen mit Behinderungen",
+                    "Eine Propaganda-Kampagne",
+                    "Die Deportation von Juden"
+                ],
+                correct: 1,
+                hint: "Über 70.000 Menschen wurden in diesem Programm ermordet.",
+                info: "Die 'Aktion T4' war das NS-Euthanasieprogramm, bei dem zwischen 1940 und 1941 über 70.000 Menschen mit Behinderungen systematisch ermordet wurden."
+            },
+            {
+                question: "Was war der 'Blitzkrieg'?",
+                options: [
+                    "Eine Propaganda-Kampagne",
+                    "Eine schnelle militärische Angriffsstrategie",
+                    "Ein Attentat",
+                    "Eine Industrialisierungsstrategie"
+                ],
+                correct: 1,
+                hint: "Diese Strategie nutzte schnelle Panzer- und Luftangriffe.",
+                info: "Der 'Blitzkrieg' war eine deutsche Militärstrategie, die auf schnelle, überraschende Angriffe mit konzentrierten Kräften setzte."
+            },
+            {
+                question: "Was war die Schlacht von Stalingrad?",
+                options: [
+                    "Ein deutscher Sieg 1941",
+                    "Eine entscheidende deutsche Niederlage 1942/43",
+                    "Eine Luftschlacht",
+                    "Der Beginn des Krieges"
+                ],
+                correct: 1,
+                hint: "Diese Schlacht gilt als Wendepunkt des Zweiten Weltkriegs.",
+                info: "Die Schlacht von Stalingrad (1942-1943) endete mit einer verheerenden deutschen Niederlage und markierte einen Wendepunkt im Zweiten Weltkrieg."
+            },
+            {
+                question: "Was waren die Nürnberger Prozesse?",
+                options: [
+                    "Gerichtsverfahren gegen NS-Kriegsverbrecher nach 1945",
+                    "Verfahren gegen Widerstandskämpfer",
+                    "Militärgerichte während des Krieges",
+                    "Die Verkündung der Rassengesetze"
+                ],
+                correct: 0,
+                hint: "Diese Prozesse fanden nach Kriegsende statt und bestraften Hauptverantwortliche.",
+                info: "In den Nürnberger Prozessen (1945-1949) wurden führende Nationalsozialisten für ihre Verbrechen vor einem internationalen Militärgericht angeklagt."
+            },
+            {
+                question: "Was war das 'Unternehmen Barbarossa'?",
+                options: [
+                    "Der Überfall auf die Sowjetunion 1941",
+                    "Die Invasion Polens",
+                    "Der Angriff auf Frankreich",
+                    "Die Luftschlacht um England"
+                ],
+                correct: 0,
+                hint: "Dies war der Angriff auf einen ehemaligen Verbündeten im Osten.",
+                info: "Am 22. Juni 1941 begann mit dem 'Unternehmen Barbarossa' der deutsche Überfall auf die Sowjetunion - der größte Landkrieg der Geschichte."
+            },
+            {
+                question: "Wer war Joseph Goebbels?",
+                options: [
+                    "Reichsaußenminister",
+                    "Reichspropagandaminister",
+                    "Reichsfinanzminister",
+                    "Oberbefehlshaber der Wehrmacht"
+                ],
+                correct: 1,
+                hint: "Er war für die Medien- und Propagandakontrolle verantwortlich.",
+                info: "Joseph Goebbels war ab 1933 Reichsminister für Volksaufklärung und Propaganda und kontrollierte alle Medien und kulturellen Ausdrucksformen im NS-Staat."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let selectedAnswer = null;
+        let score = 0;
+        let showHint = false;
+        let showInfo = false;
+        let answeredQuestions = [];
+        let showResult = false;
+
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (showResult) {
+                const percentage = (score / questions.length * 100).toFixed(0);
+                app.innerHTML = `
+                    <div class="max-w-3xl mx-auto">
+                        <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
+                            <h2 class="text-3xl font-bold mb-6 text-center">Quiz beendet!</h2>
+                            <div class="text-center mb-8">
+                                <div class="text-6xl font-bold mb-4">${percentage}%</div>
+                                <p class="text-xl mb-2">${score} von ${questions.length} Fragen richtig beantwortet</p>
+                                ${percentage >= 80 ? '<p class="text-green-400 text-lg">Ausgezeichnet!</p>' : ''}
+                                ${percentage >= 60 && percentage < 80 ? '<p class="text-yellow-400 text-lg">Gut gemacht!</p>' : ''}
+                                ${percentage < 60 ? '<p class="text-orange-400 text-lg">Weiter üben!</p>' : ''}
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h3 class="text-xl font-semibold mb-4">Deine Antworten:</h3>
+                                <div class="space-y-2">
+                                    ${answeredQuestions.map((answer, idx) => `
+                                        <div class="flex items-center gap-2">
+                                            <span class="${answer.correct ? 'text-green-500' : 'text-red-500'}">
+                                                ${answer.correct ? '✓' : '✗'}
+                                            </span>
+                                            <span class="text-sm">Frage ${idx + 1}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <button onclick="restartQuiz()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                Quiz neu starten
+                            </button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const currentQ = questions[currentQuestion];
+            
+            app.innerHTML = `
+                <div class="max-w-3xl mx-auto">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-gray-400">Frage ${currentQuestion + 1} von ${questions.length}</span>
+                            <span class="text-sm text-gray-400">Score: ${score}/${currentQuestion + (selectedAnswer !== null ? 1 : 0)}</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: ${((currentQuestion + 1) / questions.length) * 100}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
+                        <h2 class="text-2xl font-bold mb-6">${currentQ.question}</h2>
+
+                        <div class="space-y-3 mb-6">
+                            ${currentQ.options.map((option, index) => {
+                                let buttonClass = "w-full text-left p-4 rounded-lg border-2 transition-all cursor-pointer ";
+                                
+                                if (selectedAnswer === null) {
+                                    buttonClass += "border-gray-600 hover:border-blue-500 hover:bg-gray-700";
+                                } else if (index === currentQ.correct) {
+                                    buttonClass += "border-green-500 bg-green-900";
+                                } else if (index === selectedAnswer) {
+                                    buttonClass += "border-red-500 bg-red-900";
+                                } else {
+                                    buttonClass += "border-gray-600 opacity-50";
+                                }
+
+                                return `
+                                    <div onclick="handleAnswer(${index})" class="${buttonClass}">
+                                        <div class="flex items-center justify-between">
+                                            <span>${option}</span>
+                                            ${selectedAnswer !== null && index === currentQ.correct ? '<span class="text-green-400">✓</span>' : ''}
+                                            ${selectedAnswer === index && index !== currentQ.correct ? '<span class="text-red-400">✗</span>' : ''}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <button onclick="toggleHint()" class="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+                                <span>❓</span>
+                                <span>${showHint ? 'Hinweis ausblenden' : 'Hinweis anzeigen'}</span>
+                            </button>
+                            
+                            ${showHint ? `
+                                <div class="bg-yellow-900 border-l-4 border-yellow-400 p-4 rounded">
+                                    <p class="text-sm">${currentQ.hint}</p>
+                                </div>
+                            ` : ''}
+
+                            <button onclick="toggleInfo()" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+                                <span>ℹ️</span>
+                                <span>${showInfo ? 'Info ausblenden' : 'Hintergrundinfo anzeigen'}</span>
+                            </button>
+                            
+                            ${showInfo ? `
+                                <div class="bg-blue-900 border-l-4 border-blue-400 p-4 rounded">
+                                    <p class="text-sm">${currentQ.info}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        ${selectedAnswer !== null ? `
+                            <button onclick="nextQuestion()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                ${currentQuestion < questions.length - 1 ? 'Nächste Frage' : 'Ergebnis anzeigen'}
+                            </button>
+                        ` : ''}
+                    </div>
+
+                    <div class="mt-6 text-center text-sm text-gray-400">
+                        <p>Dieses Quiz dient der historischen Bildung über die NS-Zeit.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAnswer(index) {
+            if (selectedAnswer !== null) return;
+            
+            selectedAnswer = index;
+            if (index === questions[currentQuestion].correct) {
+                score++;
+            }
+            
+            answeredQuestions.push({
+                question: currentQuestion,
+                correct: index === questions[currentQuestion].correct
+            });
+            
+            render();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                selectedAnswer = null;
+                showHint = false;
+                showInfo = false;
+                render();
+            } else {
+                showResult = true;
+                render();
+            }
+        }
+
+        function toggleHint() {
+            showHint = !showHint;
+            render();
+        }
+
+        function toggleInfo() {
+            showInfo = !showInfo;
+            render();
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            selectedAnswer = null;
+            showResult = false;
+            score = 0;
+            showHint = false;
+            showInfo = false;
+            answeredQuestions = [];
+            render();
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
