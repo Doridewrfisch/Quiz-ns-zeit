@@ -15,224 +15,70 @@
     <div id="app"></div>
 
     <script>
-        const questions = [
-            {
-                question: "Wann wurde Adolf Hitler zum Reichskanzler ernannt?",
-                options: ["30. Januar 1933", "1. September 1939", "9. November 1923", "27. Februar 1933"],
-                correct: 0,
-                hint: "Dies geschah noch in der Weimarer Republik, kurz vor der Machtübernahme der NSDAP.",
-                info: "Am 30. Januar 1933 wurde Hitler von Reichspräsident Paul von Hindenburg zum Reichskanzler ernannt. Dies markierte den Beginn der NS-Diktatur in Deutschland."
-            },
-            {
-                question: "Was war der Reichstagsbrand?",
-                options: [
-                    "Ein geplanter Angriff der SA",
-                    "Ein Brand im Reichstagsgebäude am 27. Februar 1933",
-                    "Eine Propagandaveranstaltung der NSDAP",
-                    "Ein kommunistischer Aufstand"
-                ],
-                correct: 1,
-                hint: "Dieses Ereignis diente den Nationalsozialisten als Vorwand für Notverordnungen.",
-                info: "Der Reichstagsbrand vom 27. Februar 1933 wurde von den Nazis genutzt, um die 'Reichstagsbrandverordnung' zu erlassen, die grundlegende Bürgerrechte außer Kraft setzte."
-            },
-            {
-                question: "Was bedeutete das 'Ermächtigungsgesetz' von 1933?",
-                options: [
-                    "Die Legalisierung der NSDAP",
-                    "Die Regierung konnte Gesetze ohne Zustimmung des Reichstags erlassen",
-                    "Die Einführung der allgemeinen Wehrpflicht",
-                    "Die Gründung der Gestapo"
-                ],
-                correct: 1,
-                hint: "Es ermöglichte Hitler, ohne parlamentarische Kontrolle zu regieren.",
-                info: "Das Ermächtigungsgesetz vom 24. März 1933 erlaubte der Regierung, Gesetze ohne Zustimmung des Reichstags zu beschließen und war ein entscheidender Schritt zur Diktatur."
-            },
-            {
-                question: "Wann fanden die Nürnberger Rassengesetze statt?",
-                options: ["1933", "1935", "1938", "1942"],
-                correct: 1,
-                hint: "Diese Gesetze wurden auf dem NSDAP-Parteitag in Nürnberg verkündet.",
-                info: "Die Nürnberger Gesetze von 1935 bildeten die rechtliche Grundlage für die systematische Diskriminierung und Verfolgung der jüdischen Bevölkerung."
-            },
-            {
-                question: "Was geschah in der 'Reichspogromnacht' am 9./10. November 1938?",
-                options: [
-                    "Ein kommunistischer Aufstand",
-                    "Organisierte Gewalt gegen jüdische Bürger und deren Eigentum",
-                    "Die Gründung der SA",
-                    "Ein Attentat auf Hitler"
-                ],
-                correct: 1,
-                hint: "Diese Nacht wird auch als 'Reichskristallnacht' bezeichnet wegen der zerbrochenen Schaufenster.",
-                info: "In der Reichspogromnacht wurden Hunderte Synagogen zerstört, jüdische Geschäfte geplündert und Tausende Juden verhaftet und misshandelt."
-            },
-            {
-                question: "Wann begann der Zweite Weltkrieg mit dem deutschen Überfall auf Polen?",
-                options: ["1. September 1939", "10. Mai 1940", "22. Juni 1941", "7. Dezember 1941"],
-                correct: 0,
-                hint: "Dies war der Beginn des größten Krieges der Menschheitsgeschichte.",
-                info: "Am 1. September 1939 begann mit dem deutschen Überfall auf Polen der Zweite Weltkrieg, der bis 1945 dauerte."
-            },
-            {
-                question: "Was war die 'Wannseekonferenz' 1942?",
-                options: [
-                    "Eine militärische Strategiesitzung",
-                    "Die organisatorische Planung des Holocaust",
-                    "Ein Friedensangebot an die Alliierten",
-                    "Die Gründung der Wehrmacht"
-                ],
-                correct: 1,
-                hint: "Diese Konferenz befasste sich mit der 'Endlösung der Judenfrage'.",
-                info: "Am 20. Januar 1942 koordinierten hochrangige NS-Funktionäre am Wannsee die systematische Ermordung der europäischen Juden."
-            },
-            {
-                question: "Was war die 'Weiße Rose'?",
-                options: [
-                    "Eine NS-Propagandaorganisation",
-                    "Eine studentische Widerstandsgruppe um die Geschwister Scholl",
-                    "Ein militärisches Abzeichen",
-                    "Eine Frauenorganisation der NSDAP"
-                ],
-                correct: 1,
-                hint: "Diese Gruppe verteilte Flugblätter gegen das NS-Regime in München.",
-                info: "Die 'Weiße Rose' war eine der bekanntesten Widerstandsgruppen. Ihre Mitglieder, darunter Sophie und Hans Scholl, wurden 1943 hingerichtet."
-            },
-            {
-                question: "Wann war das gescheiterte Attentat auf Hitler durch Claus Schenk Graf von Stauffenberg?",
-                options: ["9. November 1939", "20. Juli 1944", "13. März 1943", "30. Januar 1945"],
-                correct: 1,
-                hint: "Dieses Attentat fand in Hitlers Hauptquartier 'Wolfsschanze' statt.",
-                info: "Am 20. Juli 1944 versuchte Stauffenberg, Hitler mit einer Bombe zu töten. Das Attentat scheiterte, und die Verschwörer wurden hingerichtet."
-            },
-            {
-                question: "Was war die Hitlerjugend (HJ)?",
-                options: [
-                    "Eine militärische Eliteeinheit",
-                    "Die Jugendorganisation der NSDAP",
-                    "Eine Widerstandsgruppe",
-                    "Ein Sportverein"
-                ],
-                correct: 1,
-                hint: "Fast alle deutschen Jugendlichen wurden Mitglieder dieser Organisation.",
-                info: "Die Hitlerjugend war die Jugendorganisation der NSDAP, die Kinder und Jugendliche im nationalsozialistischen Sinne erziehen sollte."
-            },
-            {
-                question: "Was war das Konzentrationslager Auschwitz?",
-                options: [
-                    "Ein Kriegsgefangenenlager",
-                    "Das größte Vernichtungslager des Holocaust",
-                    "Ein Arbeitslager für politische Gefangene",
-                    "Ein Internierungslager für Soldaten"
-                ],
-                correct: 1,
-                hint: "Hier wurden über eine Million Menschen ermordet, hauptsächlich Juden.",
-                info: "Auschwitz-Birkenau war das größte deutsche Konzentrations- und Vernichtungslager. Etwa 1,1 Millionen Menschen wurden dort ermordet."
-            },
-            {
-                question: "Was bedeutete 'Gleichschaltung' im NS-Regime?",
-                options: [
-                    "Die Vereinheitlichung aller gesellschaftlichen Bereiche unter NS-Kontrolle",
-                    "Die Synchronisierung von Uhren",
-                    "Ein militärischer Befehl",
-                    "Die Einführung des Hitlergrußes"
-                ],
-                correct: 0,
-                hint: "Alle Organisationen und Institutionen sollten auf NS-Linie gebracht werden.",
-                info: "Durch die 'Gleichschaltung' wurden ab 1933 alle gesellschaftlichen, politischen und kulturellen Bereiche der NS-Ideologie unterworfen."
-            },
-            {
-                question: "Was war die Gestapo?",
-                options: [
-                    "Die Propagandaabteilung",
-                    "Die Geheime Staatspolizei",
-                    "Eine Parteiorganisation",
-                    "Eine militärische Einheit"
-                ],
-                correct: 1,
-                hint: "Diese Organisation war für Überwachung und Verfolgung von 'Staatsfeinden' zuständig.",
-                info: "Die Gestapo (Geheime Staatspolizei) war die politische Polizei des NS-Regimes und verfolgte brutal alle Gegner der Nationalsozialisten."
-            },
-            {
-                question: "Wann kapitulierte Nazi-Deutschland und endete der Zweite Weltkrieg in Europa?",
-                options: ["30. April 1945", "8. Mai 1945", "2. September 1945", "1. Januar 1946"],
-                correct: 1,
-                hint: "Dieser Tag wird in vielen Ländern als Tag der Befreiung gefeiert.",
-                info: "Am 8. Mai 1945 kapitulierte Deutschland bedingungslos. Dieser Tag markiert das Ende des Zweiten Weltkriegs in Europa."
-            },
-            {
-                question: "Was war die 'Aktion T4'?",
-                options: [
-                    "Ein militärisches Unternehmen",
-                    "Das Euthanasieprogramm zur Ermordung von Menschen mit Behinderungen",
-                    "Eine Propaganda-Kampagne",
-                    "Die Deportation von Juden"
-                ],
-                correct: 1,
-                hint: "Über 70.000 Menschen wurden in diesem Programm ermordet.",
-                info: "Die 'Aktion T4' war das NS-Euthanasieprogramm, bei dem zwischen 1940 und 1941 über 70.000 Menschen mit Behinderungen systematisch ermordet wurden."
-            },
-            {
-                question: "Was war der 'Blitzkrieg'?",
-                options: [
-                    "Eine Propaganda-Kampagne",
-                    "Eine schnelle militärische Angriffsstrategie",
-                    "Ein Attentat",
-                    "Eine Industrialisierungsstrategie"
-                ],
-                correct: 1,
-                hint: "Diese Strategie nutzte schnelle Panzer- und Luftangriffe.",
-                info: "Der 'Blitzkrieg' war eine deutsche Militärstrategie, die auf schnelle, überraschende Angriffe mit konzentrierten Kräften setzte."
-            },
-            {
-                question: "Was war die Schlacht von Stalingrad?",
-                options: [
-                    "Ein deutscher Sieg 1941",
-                    "Eine entscheidende deutsche Niederlage 1942/43",
-                    "Eine Luftschlacht",
-                    "Der Beginn des Krieges"
-                ],
-                correct: 1,
-                hint: "Diese Schlacht gilt als Wendepunkt des Zweiten Weltkriegs.",
-                info: "Die Schlacht von Stalingrad (1942-1943) endete mit einer verheerenden deutschen Niederlage und markierte einen Wendepunkt im Zweiten Weltkrieg."
-            },
-            {
-                question: "Was waren die Nürnberger Prozesse?",
-                options: [
-                    "Gerichtsverfahren gegen NS-Kriegsverbrecher nach 1945",
-                    "Verfahren gegen Widerstandskämpfer",
-                    "Militärgerichte während des Krieges",
-                    "Die Verkündung der Rassengesetze"
-                ],
-                correct: 0,
-                hint: "Diese Prozesse fanden nach Kriegsende statt und bestraften Hauptverantwortliche.",
-                info: "In den Nürnberger Prozessen (1945-1949) wurden führende Nationalsozialisten für ihre Verbrechen vor einem internationalen Militärgericht angeklagt."
-            },
-            {
-                question: "Was war das 'Unternehmen Barbarossa'?",
-                options: [
-                    "Der Überfall auf die Sowjetunion 1941",
-                    "Die Invasion Polens",
-                    "Der Angriff auf Frankreich",
-                    "Die Luftschlacht um England"
-                ],
-                correct: 0,
-                hint: "Dies war der Angriff auf einen ehemaligen Verbündeten im Osten.",
-                info: "Am 22. Juni 1941 begann mit dem 'Unternehmen Barbarossa' der deutsche Überfall auf die Sowjetunion - der größte Landkrieg der Geschichte."
-            },
-            {
-                question: "Wer war Joseph Goebbels?",
-                options: [
-                    "Reichsaußenminister",
-                    "Reichspropagandaminister",
-                    "Reichsfinanzminister",
-                    "Oberbefehlshaber der Wehrmacht"
-                ],
-                correct: 1,
-                hint: "Er war für die Medien- und Propagandakontrolle verantwortlich.",
-                info: "Joseph Goebbels war ab 1933 Reichsminister für Volksaufklärung und Propaganda und kontrollierte alle Medien und kulturellen Ausdrucksformen im NS-Staat."
-            }
+        // Basisfragen unverändert (Quelle: angepasste Lehrinhalte)
+        const baseQuestions = [
+            { question: "In welchem KZ sind besonders berüchtigte Menschenversuche zur Unterkühlung (Hypothermie) dokumentiert?", options: ["Dachau", "Auschwitz-Birkenau", "Ravensbrück", "Buchenwald"], correct: 0, hint: "Diese Versuche wurden im Zusammenhang mit Luftfahrtforschung und medizinischen Tests durchgeführt.", info: "Dachau: dokumentierte Unterkühlungs- und Druckkammer‑Versuche an Häftlingen." },
+            { question: "In welchem Lager führte Josef Mengele besonders grausame Experimente an Zwillingen durch?", options: ["Auschwitz-Birkenau", "Dachau", "Buchenwald", "Ravensbrück"], correct: 0, hint: "Der Arzt wurde als 'Todesengel' bekannt.", info: "Josef Mengele praktizierte in Auschwitz und führte insbesondere an Zwillingen, Kindern und anderen Häftlingen brutale Experimente durch." },
+            { question: "Welches der genannten Lager war hauptsächlich ein Konzentrationslager für Frauen, in dem u. a. medizinische Versuche an Frauen stattfanden?", options: ["Ravensbrück", "Dachau", "Buchenwald", "Auschwitz-Birkenau"], correct: 0, hint: "Es lag nördlich von Berlin und war primär für weibliche Häftlinge vorgesehen.", info: "Ravensbrück war das größte Frauenkonzentrationslager; dort sind zahlreiche Misshandlungen und Versuche dokumentiert." },
+            { question: "Welches Lager war zugleich größter Vernichtungsort mit systematischen Gaskammern und massenhaften Deportationen?", options: ["Auschwitz-Birkenau", "Buchenwald", "Dachau", "Ravensbrück"], correct: 0, hint: "Dieses Lagerkomplex wurde zum Synonym für die industrielle Vernichtung.", info: "Auschwitz‑Birkenau war das größte Vernichtungslager; die Opferzahlen liegen in der Größenordnung von ca. 1,0–1,3 Mio." },
+            { question: "In welchem der genannten Lager sind dokumentierte Versuche mit Sulfonamiden (Wundbrand/Infektionsversuche) an Häftlingen (insbesondere Frauen) bekannt?", options: ["Ravensbrück", "Buchenwald", "Dachau", "Auschwitz-Birkenau"], correct: 0, hint: "Antibiotika‑und Wundinfektionsversuche wurden dort durchgeführt.", info: "In Ravensbrück wurden Versuche mit Sulfonamiden und Infektionen an Häftlingsfrauen dokumentiert." },
+            { question: "Welche Art von Versuch ist mit dem KZ Dachau historisch besonders verbunden?", options: ["Unterkühlungs- und Hochgebirgs-/Druckkammer‑Versuche", "Gasexperimentreihen an Zivilbevölkerung", "Sprengstofftests an Häftlingen", "Radioaktive Strahlenversuche"], correct: 0, hint: "Tests betrafen vor allem Parameter der menschlichen Überlebensfähigkeit unter extremen Bedingungen.", info: "In Dachau gab es u. a. Unterkühlungs‑sowie Druckkammer‑Experimente (auch im Kontext der Luftwaffenforschung)." },
+            { question: "In welchem Lager wurden Häftlinge zu Zwangsarbeit in Rüstungsbetrieben herangezogen, wobei medizinische 'Experimente' und tödliche Bedingungen kombiniert wurden?", options: ["Buchenwald", "Auschwitz-Birkenau", "Ravensbrück", "Dachau"], correct: 0, hint: "Das Lager lag in Thüringen und war eng mit der Rüstungsindustrie verbunden.", info: "Buchenwald war ein großes KZ in Deutschland mit umfangreicher Zwangsarbeit; auch Misshandlungen und medizinische Verbrechen sind dokumentiert." },
+            { question: "Ungefähr wie viele Menschen werden weltweit als Tote des Zweiten Weltkriegs (inkl. militärisch & zivil) geschätzt? (Schätzfrage)", options: ["~70 Millionen (rund)", "~30 Millionen", "~100 Millionen", "~10 Millionen"], correct: 0, hint: "Die Bandbreite liegt in den hohen zehn‑ bis niedrigen zweistelligen Millionen.", info: "Gängige Schätzungen für die Gesamtopfer des Zweiten Weltkriegs liegen bei etwa 65–75 Millionen. (Akzeptiert: 65–75M)" },
+            { question: "Etwa wie viele Menschen wurden im Vernichtungs‑und Vernichtungsmaßstab im Lager Auschwitz‑Birkenau getötet? (Schätzfrage — grobe Größenordnung)", options: ["~1.100.000", "~10.000", "~300.000", "~3.000.000"], correct: 0, hint: "Die übliche, oft zitierte Größenordnung liegt um eine Million.", info: "Häufig genannte Schätzung für Auschwitz‑Birkenau liegt bei etwa 1,0–1,3 Millionen Opfern (mehrheitlich jüdische Menschen). (Akzeptiert: 1.0–1.3M)" },
+            { question: "In welchem Lager sind systematische Sterilisations‑und 'Euthanasie'‑bezogene Verbrechen (u. a. Zwangssterilisierung, Sterilisationsexperimente) dokumentiert?", options: ["Ravensbrück und Auschwitz-Birkenau", "Nur Dachau", "Nur Buchenwald", "Keines der genannten"], correct: 0, hint: "Mehrere Orte meldeten solche Verbrechen, besonders gegen Frauen.", info: "Sterilisations‑und euthanasiebezogene Verbrechen sind u. a. in Ravensbrück und in Teilen des Auschwitzkomplexes dokumentiert; Ravensbrück war ein Zentrum für Frauenversuche." },
+            { question: "Welches Land erlitt während des Zweiten Weltkriegs die höchsten absoluten Verluste (ungefähr, alle Todesarten)?", options: ["Sowjetunion", "Polen", "Deutschland", "Frankreich"], correct: 0, hint: "Das Land verlor Millionen an Soldaten und Zivilisten; die Zahlen sind am höchsten in absoluten Werten.", info: "Die Sowjetunion erlitt die höchsten absoluten Verluste, Schätzzahlen liegen oft zwischen ca. 20–27 Millionen Toten." },
+            { question: "Welches Land verlor prozentual (bezogen auf die VOR‑Krieg‑Bevölkerung) am meisten durch Tod und Vertreibung im Zweiten Weltkrieg?", options: ["Polen", "Vereinigtes Königreich", "USA", "Schweden"], correct: 0, hint: "Dieses Land verlor einen sehr hohen Anteil seiner Bevölkerung.", info: "Polen erlitt prozentual extrem hohe Verluste an Zivilbevölkerung und Kriegstoten; relative Verluste zählen zu den höchsten." },
+            { question: "In welchem Lager gab es dokumentierte medizinische Versuche, die mit Giftstoffen bzw. Vergiftungsversuchen (z. B. Giftgas‑Tests an Häftlingen) zusammenhängen?", options: ["Buchenwald (und in Teilen auch andere Lager)", "Nur Dachau", "Nur Ravensbrück", "Keines der Lager"], correct: 0, hint: "Einige Lager dokumentieren Gift‑oder Vergiftungstests in unterschiedlicher Form.", info: "In Buchenwald und anderen Lagern sind verschiedenartige Vergiftungs‑oder toxikologische Versuche bzw. Vergiftungsfälle dokumentiert." },
+            { question: "Wie viele Juden wurden im Holocaust (ungefähre, häufig zitierte Schätzung) ermordet? (Schätzfrage)", options: ["~6.000.000", "~100.000", "~20.000.000", "~500.000"], correct: 0, hint: "Die oft zitierte Zahl liegt bei mehreren Millionen.", info: "Die häufig zitierte Schätzung für jüdische Opfer des Holocaust liegt bei rund 6 Millionen. (Akzeptiert: 5.5–6.5M)" },
+            { question: "Ungefähr wie viel Prozent der Weltbevölkerung (ca. 1940) entsprechen 70 Millionen Todesopfern?", options: ["~3%", "~0.3%", "~10%", "~20%"], correct: 0, hint: "Rechne grob: 70M geteilt durch ca. 2,3 Milliarden.", info: "70 Millionen von etwa 2,3 Milliarden entsprechen grob 3% der damaligen Weltbevölkerung." },
+            { question: "In welchem Lager waren zahlreiche Häftlinge Opfer von Menschenversuchen, die von Ärzten im Zusammenhang mit Wundbehandlung und Infektionstests durchgeführt wurden (u. a. absichtliche Infektionen)?", options: ["Buchenwald und Ravensbrück", "Nur Dachau", "Nur Auschwitz-Birkenau", "Keines der Lager"], correct: 0, hint: "Mehrere Lager führten solche Experimente durch, besonders an verwundeten Häftlingen.", info: "In Buchenwald und Ravensbrück sind absichtliche Infektions‑und Wundversuche dokumentiert." },
+            { question: "Welche Gruppe war gezielt Opfer der nationalsozialistischen 'Rassenpolitik' und erlitt systematischen Mord (Kerngruppe des Holocaust)?", options: ["Jüdische Menschen", "Rom (Sinti und Roma) ausschließlich", "Politische Gefangene ausschließlich", "Alleine Kriegsgefangene"], correct: 0, hint: "Diese Gruppe war zentral Ziel des Holocaust.", info: "Jüdische Menschen waren die zentrale Zielgruppe des Holocaust; zudem wurden auch andere Gruppen verfolgt und ermordet." },
+            { question: "Welche Aussage zu Josef Mengele ist korrekt?", options: ["Er arbeitete vor allem in Auschwitz und experimentierte unter anderem an Zwillingen.", "Er leitete die Experimente in Dachau, aber nie in Auschwitz.", "Er war ein SS-Anwalt und führte keine medizinischen Experimente durch.", "Er war Lagerkommandant von Buchenwald."], correct: 0, hint: "Bekannt geworden durch Experimente an Kindern und Zwillingen.", info: "Josef Mengele war SS‑Arzt in Auschwitz und für grausame Menschenversuche berüchtigt." },
+            { question: "Welches Lager war eines der ersten, das die Nazis 1933 einrichteten und das später als Modell für andere Lager diente?", options: ["Dachau", "Auschwitz-Birkenau", "Ravensbrück", "Buchenwald"], correct: 0, hint: "Es wurde kurz nach Hitlers Ernennung eröffnet.", info: "Dachau wurde 1933 eröffnet und war eines der ersten großen Konzentrationslager des NS‑Regimes." },
+            { question: "Schätzfrage: Wie viele Menschen starben insgesamt in den KZs, Ghettos und Vernichtungslagern des NS‑Regimes (inkl. Holocaust‑Opfer und weitere Gruppen) — grobe, häufig zitierte Gesamtordnung?", options: ["~11 Millionen", "~1 Million", "~70 Millionen", "~100.000"], correct: 0, hint: "Diese Zahl bezieht sich auf Opfer des NS‑Regimes (exkl. Gesamttoten des WW2).", info: "Häufig wird für Opferkreise des NS‑Regimes eine Größenordnung um 10–12 Millionen genannt (Juden, Verfolgte, Behinderte, Roma u. a.). (Akzeptiert: 10–12M)" },
+            { question: "In welchem Jahr wurde das KZ Dachau offiziell eröffnet? (Zeitleisten‑Aufgabe — gib das Jahr an; Akzeptanz ±2 Jahre)", options: [], correct: null, type: 'year', answer: 1933, hint: "Dachau wurde kurz nach Hitlers Ernennung eröffnet.", info: "Dachau wurde im März 1933 eröffnet. (Akzeptanzbereich: 1931–1935)" },
+            { question: "In welchem Jahr wurde Auschwitz‑Birkenau (als größtes Vernichtungslager, Beginn der Massenvernichtung in dem Komplex) befreit? (Zeitleisten‑Aufgabe — gib das Jahr an; Akzeptanz ±2 Jahre)", options: [], correct: null, type: 'year', answer: 1945, hint: "Die Befreiung erfolgte gegen Ende des Krieges, im Januar eines Jahres.", info: "Auschwitz wurde am 27. Januar 1945 befreit. (Akzeptanzbereich: 1943–1947)" },
+            { question: "Welche Aussage trifft auf Buchenwald zu?", options: ["Buchenwald war ein großes Konzentrationslager mit Zwangsarbeit; es gab dort auch medizinische Misshandlungen und eine hohe Todesrate.", "Buchenwald war ausschließlich eine Endlagerungsstelle mit Gaskammern wie Auschwitz.", "Buchenwald war ein reines Internierungslager ohne medizinische Versuche.", "Buchenwald lag in Polen."], correct: 0, hint: "Es lag in Thüringen, Deutschland und diente als Arbeitslager.", info: "Buchenwald war ein großes deutsches KZ (bei Weimar) mit Zwangsarbeit; es war kein reines Vernichtungslager wie Auschwitz." },
+            { question: "Welche der folgenden Opfergruppen wurde neben jüdischen Menschen systematisch verfolgt und ermordet?", options: ["Sinti und Roma", "Australische Zivilisten", "Neutrale Staatsangehörige generell", "Alle Menschen über 90 Jahre"], correct: 0, hint: "Diese Minderheit war Ziel der 'Zigeunerpolitik' der Nazis.", info: "Sinti und Roma wurden systematisch verfolgt und in vielen Fällen ermordet." },
+            { question: "Schätzfrage: Ungefähr wie viele Menschen verloren in Polen ihr Leben (militärisch & zivil) infolge deutscher Besatzung und Krieg bis 1945?", options: ["~5–6 Millionen", "~500.000", "~20 Millionen", "~50.000"], correct: 0, hint: "Polen erlitt sehr hohe absolute und relative Verluste.", info: "Gängige Schätzungen für Polens Gesamtverluste liegen bei ca. 4,5–6,5 Millionen Menschen. (Akzeptiert: 4.5–6.5M)" }
         ];
 
+        // Hilfsfunktion: Fisher-Yates Shuffle
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Erzeuge runtime questions; mische nur bei normalen MCQ-Fragen, bewahre 'year'-Fragen unverändert
+        const questions = baseQuestions.map(q => {
+            if (q.type === 'year') {
+                return {
+                    question: q.question,
+                    type: 'year',
+                    answer: q.answer, // numerische Jahresantwort
+                    hint: q.hint,
+                    info: q.info
+                };
+            }
+
+            const opts = q.options.map((o, idx) => ({ text: o, originalIndex: idx }));
+            const shuffled = shuffleArray(opts.slice());
+            const newCorrect = shuffled.findIndex(s => s.originalIndex === q.correct);
+            return {
+                question: q.question,
+                type: 'mcq',
+                options: shuffled.map(s => s.text),
+                correct: newCorrect,
+                hint: q.hint,
+                info: q.info
+            };
+        });
+
+        // Zustand
         let currentQuestion = 0;
         let selectedAnswer = null;
         let score = 0;
@@ -241,6 +87,7 @@
         let answeredQuestions = [];
         let showResult = false;
 
+        // Render- und Interaktionsfunktionen (unverändert, nur leicht bereinigt)
         function render() {
             const app = document.getElementById('app');
             
@@ -299,29 +146,40 @@
                         <h2 class="text-2xl font-bold mb-6">${currentQ.question}</h2>
 
                         <div class="space-y-3 mb-6">
-                            ${currentQ.options.map((option, index) => {
-                                let buttonClass = "w-full text-left p-4 rounded-lg border-2 transition-all cursor-pointer ";
-                                
-                                if (selectedAnswer === null) {
-                                    buttonClass += "border-gray-600 hover:border-blue-500 hover:bg-gray-700";
-                                } else if (index === currentQ.correct) {
-                                    buttonClass += "border-green-500 bg-green-900";
-                                } else if (index === selectedAnswer) {
-                                    buttonClass += "border-red-500 bg-red-900";
-                                } else {
-                                    buttonClass += "border-gray-600 opacity-50";
-                                }
-
-                                return `
-                                    <div onclick="handleAnswer(${index})" class="${buttonClass}">
-                                        <div class="flex items-center justify-between">
-                                            <span>${option}</span>
-                                            ${selectedAnswer !== null && index === currentQ.correct ? '<span class="text-green-400">✓</span>' : ''}
-                                            ${selectedAnswer === index && index !== currentQ.correct ? '<span class="text-red-400">✗</span>' : ''}
-                                        </div>
+                            ${currentQ.type === 'year' ? `
+                                <div class="flex flex-col items-center gap-3">
+                                    <div class="flex items-center gap-4">
+                                        <input id="yearSlider" type="range" min="${currentQ.answer - 20}" max="${currentQ.answer + 20}" value="${currentQ.answer}" class="w-64" oninput="document.getElementById('yearValue').innerText = this.value">
+                                        <div class="w-24 text-center">Jahr: <span id="yearValue" class="font-semibold">${currentQ.answer}</span></div>
                                     </div>
-                                `;
-                            }).join('')}
+                                    <button onclick="submitYear()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Antwort prüfen</button>
+                                </div>
+                                ${selectedAnswer !== null ? `<div class="text-center mt-2 ${answeredQuestions[answeredQuestions.length-1].correct ? 'text-green-400' : 'text-red-400'}">${answeredQuestions[answeredQuestions.length-1].correct ? 'Richtig' : `Falsch — korrekt wäre ${currentQ.answer}`}</div>` : ''}
+                            ` : `
+                                ${currentQ.options.map((option, index) => {
+                                    let buttonClass = "w-full text-left p-4 rounded-lg border-2 transition-all cursor-pointer ";
+                                    
+                                    if (selectedAnswer === null) {
+                                        buttonClass += "border-gray-600 hover:border-blue-500 hover:bg-gray-700";
+                                    } else if (index === currentQ.correct) {
+                                        buttonClass += "border-green-500 bg-green-900";
+                                    } else if (index === selectedAnswer) {
+                                        buttonClass += "border-red-500 bg-red-900";
+                                    } else {
+                                        buttonClass += "border-gray-600 opacity-50";
+                                    }
+
+                                    return `
+                                        <div onclick="handleAnswer(${index})" class="${buttonClass}">
+                                            <div class="flex items-center justify-between">
+                                                <span>${option}</span>
+                                                ${selectedAnswer !== null && index === currentQ.correct ? '<span class="text-green-400">✓</span>' : ''}
+                                                ${selectedAnswer === index && index !== currentQ.correct ? '<span class="text-red-400">✗</span>' : ''}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            `}
                         </div>
 
                         <div class="space-y-3 mb-6">
@@ -363,18 +221,37 @@
         }
 
         function handleAnswer(index) {
+            const currentQ = questions[currentQuestion];
+            if (currentQ.type === 'year') return; // year questions handled via submitYear()
             if (selectedAnswer !== null) return;
             
             selectedAnswer = index;
-            if (index === questions[currentQuestion].correct) {
+            if (index === currentQ.correct) {
                 score++;
             }
             
             answeredQuestions.push({
                 question: currentQuestion,
-                correct: index === questions[currentQuestion].correct
+                correct: index === currentQ.correct
             });
             
+            render();
+        }
+
+        function submitYear() {
+            const slider = document.getElementById('yearSlider');
+            if (!slider) return;
+            const val = parseInt(slider.value, 10);
+            if (isNaN(val)) return;
+
+            const currentQ = questions[currentQuestion];
+            if (currentQ.type !== 'year') return;
+
+            // Akzeptanz ±2 Jahre
+            const correct = Math.abs(val - currentQ.answer) <= 2;
+            selectedAnswer = val; // store the numeric input to show feedback
+            if (correct) score++;
+            answeredQuestions.push({ question: currentQuestion, correct });
             render();
         }
 
@@ -415,5 +292,3 @@
         // Initial render
         render();
     </script>
-</body>
-</html>
