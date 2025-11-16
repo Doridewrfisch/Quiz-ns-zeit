@@ -15,8 +15,13 @@
     <div id="app"></div>
 
     <script>
-        // Basisfragen unverändert (Quelle: angepasste Lehrinhalte)
+        // Basisfragen (erweitert um 5 neue Fragen zur Machtübernahme)
         const baseQuestions = [
+            { question: "Welche wirtschaftliche Krise verstärkte Anfang der 1930er Jahre die Unterstützung für die NSDAP?", options: ["Die Ölkrise", "Die Weltwirtschaftskrise", "Die Inflation der 1970er Jahre", "Die Dotcom-Blase"], correct: 1, hint: "Diese Krise begann 1929 und führte zu massiver Arbeitslosigkeit in Deutschland.", info: "Die Weltwirtschaftskrise ab 1929 führte zu massiver Arbeitslosigkeit und Verarmung. Viele Menschen verloren das Vertrauen in die Demokratie der Weimarer Republik und wandten sich radikalen Parteien wie der NSDAP zu, die Besserung versprachen." },
+            { question: "Welche Position erhielt Hitler am 30. Januar 1933?", options: ["Reichspräsident", "Reichstagspräsident", "Reichskanzler", "Außenminister"], correct: 2, hint: "Er wurde vom Reichspräsidenten Hindenburg in dieses Amt berufen.", info: "Hitler wurde nicht durch eine Mehrheit gewählt, sondern vom Reichspräsidenten Paul von Hindenburg zum Reichskanzler ernannt. Konservative Politiker glaubten, sie könnten ihn 'benutzen' und kontrollieren - ein fataler Fehler." },
+            { question: "Welches Ereignis nutzte die NSDAP 1933, um politische Gegner zu verfolgen und Grundrechte einzuschränken?", options: ["Das Münchener Abkommen", "Der Reichstagsbrand", "Der Hitler-Ludendorff-Putsch", "Die Nacht der langen Messer"], correct: 1, hint: "Dieses Gebäude brannte im Februar 1933, und die Kommunisten wurden dafür verantwortlich gemacht.", info: "Nach dem Brand des Reichstagsgebäudes beschuldigte die NSDAP die Kommunisten. Mit der Reichstagsbrandverordnung wurden viele Grundrechte außer Kraft gesetzt, was Verhaftungen politischer Gegner und den Aufbau einer Diktatur erleichterte." },
+            { question: "Wie hieß das Gesetz, das Hitler im März 1933 nahezu unbegrenzte Gesetzgebungsbefugnisse gab?", options: ["Ermächtigungsgesetz", "Nürnberger Gesetz", "Weimarer Verfassungsgesetz", "Gleichschaltungsgesetz"], correct: 0, hint: "Der Name dieses Gesetzes beschreibt, was es tat: Es ermächtigte die Regierung zu unbeschränkter Macht.", info: "Das Ermächtigungsgesetz erlaubte der Regierung, ohne Zustimmung des Reichstags Gesetze zu erlassen - sogar solche, die die Verfassung änderten. Damit war der entscheidende Schritt zur Aufhebung der Demokratie getan." },
+            { question: "Wie nennt man die systematische Ausschaltung politischer und gesellschaftlicher Institutionen zugunsten der NSDAP im Jahr 1933/34?", options: ["Appeasement", "Gleichschaltung", "Entnazifizierung", "Reparationen"], correct: 1, hint: "Dieser Begriff bedeutet, dass alle Bereiche des öffentlichen Lebens auf eine Linie gebracht wurden.", info: "'Gleichschaltung' bedeutete, dass alle Bereiche des öffentlichen Lebens - Medien, Vereine, Verwaltung, Kultur - unter Kontrolle der NSDAP gebracht wurden. Damit wurde die Diktatur vollständig etabliert." },
             { question: "In welchem KZ sind besonders berüchtigte Menschenversuche zur Unterkühlung (Hypothermie) dokumentiert?", options: ["Dachau", "Auschwitz-Birkenau", "Ravensbrück", "Buchenwald"], correct: 0, hint: "Diese Versuche wurden im Zusammenhang mit Luftfahrtforschung und medizinischen Tests durchgeführt.", info: "Dachau: dokumentierte Unterkühlungs- und Druckkammer‑Versuche an Häftlingen." },
             { question: "In welchem Lager führte Josef Mengele besonders grausame Experimente an Zwillingen durch?", options: ["Auschwitz-Birkenau", "Dachau", "Buchenwald", "Ravensbrück"], correct: 0, hint: "Der Arzt wurde als 'Todesengel' bekannt.", info: "Josef Mengele praktizierte in Auschwitz und führte insbesondere an Zwillingen, Kindern und anderen Häftlingen brutale Experimente durch." },
             { question: "Welches der genannten Lager war hauptsächlich ein Konzentrationslager für Frauen, in dem u. a. medizinische Versuche an Frauen stattfanden?", options: ["Ravensbrück", "Dachau", "Buchenwald", "Auschwitz-Birkenau"], correct: 0, hint: "Es lag nördlich von Berlin und war primär für weibliche Häftlinge vorgesehen.", info: "Ravensbrück war das größte Frauenkonzentrationslager; dort sind zahlreiche Misshandlungen und Versuche dokumentiert." },
@@ -59,7 +64,7 @@
                 return {
                     question: q.question,
                     type: 'year',
-                    answer: q.answer, // numerische Jahresantwort
+                    answer: q.answer,
                     hint: q.hint,
                     info: q.info
                 };
@@ -87,7 +92,6 @@
         let answeredQuestions = [];
         let showResult = false;
 
-        // Render- und Interaktionsfunktionen (unverändert, nur leicht bereinigt)
         function render() {
             const app = document.getElementById('app');
             
@@ -222,7 +226,7 @@
 
         function handleAnswer(index) {
             const currentQ = questions[currentQuestion];
-            if (currentQ.type === 'year') return; // year questions handled via submitYear()
+            if (currentQ.type === 'year') return;
             if (selectedAnswer !== null) return;
             
             selectedAnswer = index;
@@ -249,7 +253,7 @@
 
             // Akzeptanz ±2 Jahre
             const correct = Math.abs(val - currentQ.answer) <= 2;
-            selectedAnswer = val; // store the numeric input to show feedback
+            selectedAnswer = val;
             if (correct) score++;
             answeredQuestions.push({ question: currentQuestion, correct });
             render();
@@ -292,3 +296,5 @@
         // Initial render
         render();
     </script>
+</body>
+</html>
